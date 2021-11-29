@@ -1,0 +1,73 @@
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Roboto';
+}
+
+h4 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.App {
+  background-color: #fafafa;
+  height: 100vh;
+  padding-top: 40px;
+}
+
+.wrapper {
+  width: 530px;
+  margin: 0 auto;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.item-text {
+  flex: 1;
+  line-height: 40px !important;
+}
+
+.header {
+  background-color: #1976d2 !important;
+  color: #fff !important;
+  padding: 15px;
+  margin-bottom: 10px !important;
+  border-radius: 0 !important;
+}
+
+.field {
+  display: flex;
+  padding: 0 15px;
+
+  .checkbox {
+    position: relative;
+    top: -5px;
+  }
+
+  .MuiInput-root:before {
+    display: none !important;
+  }
+
+  button {
+    width: 35px;
+    height: 35px;
+    min-width: 10px;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.item {
+  flex: 1;
+
+  &-buttons {
+    align-items: center;
+    margin-left: 15px;
+  }
+}
+
+.check-buttons {
+  padding: 15px;
+}
