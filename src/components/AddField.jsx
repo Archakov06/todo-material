@@ -4,10 +4,14 @@ import { TextField, Button, Checkbox } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useSelector } from 'react-redux';
 
 export const AddField = ({ onAdd }) => {
+  const filterBy = useSelector((state) => state.filterBy);
   const [inputValue, setInputValue] = React.useState('');
   const [checked, setChecked] = React.useState(false);
+
+  console.log(filterBy);
 
   const onClickAdd = () => {
     onAdd(inputValue, checked);
