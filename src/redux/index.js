@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import axios from 'axios';
 
 import { filterReducer } from './reducers/filter';
@@ -24,6 +25,6 @@ const log = (store) => (next) => (action) => {
   return next(action);
 };
 
-const store = createStore(rootRedcuer, applyMiddleware(thunk, log));
+const store = createStore(rootRedcuer, composeWithDevTools(applyMiddleware(thunk, log)));
 
 export default store;
