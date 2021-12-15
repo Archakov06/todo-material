@@ -4,11 +4,22 @@ import { AddField } from './components/AddField';
 import { Item } from './components/Item';
 import { useSelector, useDispatch } from 'react-redux';
 import { Filter } from './components/Filter';
-import { addTask, removeTask, toggleCompleted, clearAll, completeAll } from './redux/actions/tasks';
+import {
+  addTask,
+  removeTask,
+  toggleCompleted,
+  clearAll,
+  completeAll,
+  fetchTasks,
+} from './redux/actions/tasks';
 
 function App() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+
+  React.useEffect(() => {
+    dispatch(fetchTasks());
+  }, []);
 
   const handleClickAdd = (text, checked) => {
     dispatch(addTask(text, checked));

@@ -1,4 +1,7 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import axios from 'axios';
+
 import { filterReducer } from './reducers/filter';
 import { tasksReducer } from './reducers/tasks';
 
@@ -7,6 +10,20 @@ const rootRedcuer = combineReducers({
   tasks: tasksReducer,
 });
 
-const store = createStore(rootRedcuer);
+const log = (store) => (next) => (action) => {
+  console.log('ВЫПОЛНИЛСЯ ЭКШН!', store, action);
+
+  if (action.type === 'ADD_TASK') {
+    axios.post('https://61ba2ba348df2f0017e5a968.mockapi.io/tasks', action.payload);
+    setTimeout(() => {
+      next(action);
+    }, 5000);
+    return;
+  }
+
+  return next(action);
+};
+
+const store = createStore(rootRedcuer, applyMiddleware(thunk, log));
 
 export default store;

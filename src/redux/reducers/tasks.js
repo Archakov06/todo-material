@@ -1,13 +1,10 @@
-const initialState = [
-  {
-    id: 1,
-    text: 'Первая задача',
-    completed: false,
-  },
-];
+const initialState = [];
 
 export function tasksReducer(state = initialState, action) {
   switch (action.type) {
+    case 'SET_TASKS':
+      return action.payload;
+
     case 'ADD_TASK':
       return [
         ...state,
